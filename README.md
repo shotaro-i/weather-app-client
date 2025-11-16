@@ -13,7 +13,7 @@ How it works
 
 To run
 
-- Open `vanilla-js/weather-app-client/index.html` in your browser (or serve with a static server).
+- Open `weather-app-client/index.html` in your browser (or serve with a static server).
 
 Notes
 
