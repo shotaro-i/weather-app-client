@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Simple Weather (Open-Meteo)</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Simple Weather</h1>
+        <p class="muted">
+          No API key required — uses Open-Meteo geocoding + forecast APIs.
+        </p>
+      </header>
+
+      <form id="form" class="controls">
+        <input id="city" type="text" placeholder="Enter city (e.g. Tokyo)" />
+        <button class="btn" type="submit">Check</button>
+      </form>
+
+      <div id="status" class="status"></div>
+
+      <section id="result" class="card result hidden" aria-live="polite">
+        <div class="main">
+          <div>
+            <h2 id="cityName"></h2>
+            <div id="desc" class="muted"></div>
+          </div>
+        </div>
+        <div class="metrics">
+          <div id="temp"></div>
+          <div id="wind"></div>
+        </div>
+      </section>
+
+      <footer class="app-footer muted">
+        Data from Open-Meteo. This demo stores the last searched city in
+        localStorage.
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

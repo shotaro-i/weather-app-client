@@ -1,0 +1,96 @@
+:root {
+  --bg: #f6f8fb;
+  --card: #fff;
+  --muted: #6b7280;
+  --accent: #0f172a;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+body {
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+}
+.app {
+  width: 100%;
+  max-width: 640px;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06);
+}
+.app header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+.muted {
+  color: var(--muted);
+}
+.controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.controls input[type="text"] {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #e6e9ef;
+}
+.btn {
+  background: var(--accent);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+}
+.status {
+  margin-top: 12px;
+  min-height: 1.4rem;
+}
+.result.hidden {
+  display: none;
+}
+.card {
+  margin-top: 14px;
+  border: 1px solid #eef2ff;
+  padding: 14px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #fff, #fbfdff);
+}
+.card .main {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.card h2 {
+  margin: 0;
+}
+.metrics {
+  display: flex;
+  gap: 18px;
+  margin-top: 12px;
+}
+.app-footer {
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+@media (max-width: 520px) {
+  .controls {
+    flex-direction: column;
+  }
+  .metrics {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
