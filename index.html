@@ -9,14 +9,32 @@
   <body>
     <main class="app">
       <header>
-        <h1>Simple Weather</h1>
+        <div class="header-row">
+          <h1>Simple Weather</h1>
+          <div class="header-actions">
+            <button
+              id="themeToggle"
+              class="theme-toggle"
+              aria-pressed="false"
+              aria-label="Toggle theme"
+            >
+              🌙
+            </button>
+          </div>
+        </div>
         <p class="muted">
           No API key required — uses Open-Meteo geocoding + forecast APIs.
         </p>
       </header>
 
       <form id="form" class="controls">
-        <input id="city" type="text" placeholder="Enter city (e.g. Tokyo)" />
+        <label for="city" class="visually-hidden">City</label>
+        <input
+          id="city"
+          type="text"
+          placeholder="Enter city (e.g. Tokyo)"
+          aria-label="city"
+        />
         <button class="btn" type="submit">Check</button>
       </form>
 

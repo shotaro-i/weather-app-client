@@ -1,9 +1,11 @@
 // Simple client-only weather app using Open-Meteo (no API key)
 const KEY_CITY = "weather_client_last_city_v1";
+const THEME_KEY = "weather_theme_v1"; // 'light' | 'dark'
 
 const el = {
   form: document.querySelector("#form"),
   inputCity: document.querySelector("#city"),
+  themeToggle: document.querySelector("#themeToggle"),
   status: document.querySelector("#status"),
   result: document.querySelector("#result"),
   cityName: document.querySelector("#cityName"),
@@ -20,14 +22,35 @@ function setStatus(msg, isError) {
 function saveLastCity(c) {
   try {
     localStorage.setItem(KEY_CITY, c);
-  } catch (e) {}
+  } catch (e) {
+    console.log(e);
+  }
 }
 function loadLastCity() {
   try {
     return localStorage.getItem(KEY_CITY);
   } catch (e) {
-    return "";
+    console.log(e);
   }
+}
+
+function saveTheme(t) {
+  try {
+    localStorage.setItem(THEME_KEY, t);
+  } catch (e) {
+    console.log(e);
+  }
+}
+function loadTheme() {
+  try {
+    return localStorage.getItem(THEME_KEY) || "dark";
+  } catch (e) {
+    return "dark";
+  }
+}
+function applyTheme(t) {
+  if (t === "light") document.body.classList.add("theme-light");
+  else document.body.classList.remove("theme-light");
 }
 
 // Geocode with Open-Meteo geocoding API (no key)
@@ -152,6 +175,26 @@ async function handleLookup(city) {
 }
 
 function init() {
+  // theme: initialize and wire toggle
+  const curTheme = loadTheme();
+  applyTheme(curTheme);
+  if (el.themeToggle) {
+    el.themeToggle.setAttribute(
+      "aria-pressed",
+      curTheme === "light" ? "true" : "false"
+    );
+    el.themeToggle.textContent = curTheme === "light" ? "🌞" : "🌙";
+    el.themeToggle.addEventListener("click", () => {
+      const next = loadTheme() === "light" ? "dark" : "light";
+      applyTheme(next);
+      saveTheme(next);
+      el.themeToggle.setAttribute(
+        "aria-pressed",
+        next === "light" ? "true" : "false"
+      );
+      el.themeToggle.textContent = next === "light" ? "🌞" : "🌙";
+    });
+  }
   const savedCity = loadLastCity();
   if (savedCity) el.inputCity.value = savedCity;
   el.form.addEventListener("submit", (e) => {
