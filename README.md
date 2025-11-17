@@ -10,6 +10,7 @@ How it works
 - The app calls Open-Meteo Geocoding API to get latitude/longitude.
 - Then it calls Open-Meteo Forecast API with `current_weather=true` to retrieve the current temperature and wind.
 - The last searched city is saved to localStorage.
+- Click the moon and sun icons to toggle between light mode and dark mode.
 
 To run
 
